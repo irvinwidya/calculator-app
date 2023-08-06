@@ -1,0 +1,79 @@
+#Info {
+  --_position-inset: 0.5rem;
+  --_info-border-radius: calc(
+    var(--app-border-radius) - var(--_position-inset)
+  );
+
+  position: relative;
+
+  > * {
+    transition: all 250ms ease;
+  }
+
+  #Info__Button {
+    position: absolute;
+    top: var(--_position-inset);
+    left: var(--_position-inset);
+    z-index: 10;
+
+    --_size: 2rem;
+    width: var(--_size);
+    height: var(--_size);
+
+    background-color: #222;
+    border: transparent;
+    border-radius: var(--_info-border-radius);
+
+    color: var(--primary-color);
+    font-size: 1.25rem;
+
+    &:hover,
+    &.active {
+      background-color: var(--theme-color);
+      color: #222;
+    }
+  }
+
+  #Info__Content {
+    position: absolute;
+    top: var(--_position-inset);
+    left: var(--_position-inset);
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 2rem;
+    height: 2rem;
+    gap: 0.5rem;
+
+    background-color: var(--theme-color);
+    border-radius: var(--_info-border-radius);
+
+    font-size: 0.9rem;
+
+    &.expand-width {
+      width: calc(var(--app-width) - 2 * var(--_position-inset));
+    }
+
+    &.expand-height {
+      height: 92.5vh;
+      padding-block: 2.5rem;
+      padding-inline: 1rem;
+    }
+
+    .title {
+      font-size: 1.2rem;
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+
+      gap: .5rem;
+
+      font-size: .9rem;
+    }
+  }
+}
