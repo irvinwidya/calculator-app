@@ -1,4 +1,4 @@
-# My Calculator (In Development)
+# My Calculator
 
 A simple calculator app built with React + MathJS library.
 
