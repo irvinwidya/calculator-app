@@ -6,8 +6,8 @@ P.S. Known bugs when displaying proper number, such as leading zero(s) on operan
 
 **Changelog:**
 
-<details>
-  <summary>v0.1.0 - Published with limited functionality</summary>
+<details markdown="span">
+  <summary markdown="span">v0.1.0 - Published with limited functionality</summary>
   <p>
     - Basic arithmetic operation (addition, substraction, multiplication, and division)
     - Can only do a single equation
