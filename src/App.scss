@@ -183,3 +183,18 @@ main#Calculator {
     visibility: hidden;
   }
 }
+
+a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: .25rem .5rem;
+  gap: .25rem;
+  
+  background-color: #222;
+  border-radius: .5rem;
+  color: #eee;
+
+  text-decoration: none;
+}

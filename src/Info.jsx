@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import "./Info.scss";
+import { TbExternalLink } from 'react-icons/tb'
 
 export default function Info() {
   const infoButtonRef = useRef();
@@ -59,17 +60,19 @@ export default function Info() {
         id="Info__Content"
         className="v-hidden text-transparent"
       >
-        <span className="title">My Calculator</span>
+        <span className="title">Calculator App</span>
         <p className="description">
           <span>A simple calculator app built with MathJS library.</span>
           <span>For more information:</span>
-          <a
-            href="https://github.com/irvinwidya/my-calculator"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub - My Calculator
-          </a>
+          <span>
+            <a
+              href="https://github.com/irvinwidya/calculator-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <TbExternalLink /> GitHub - Calculator App
+            </a>
+          </span>
         </p>
       </div>
     </div>
