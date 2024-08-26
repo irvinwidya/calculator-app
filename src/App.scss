@@ -1,6 +1,7 @@
-@import "./styles/font";
-@import "./styles/utils";
-@import "./styles/variables";
+@font-face {
+  font-family: "Sora";
+  src: url("assets/fonts/sora.ttf");
+}
 
 *,
 *::after,
@@ -8,25 +9,17 @@
   box-sizing: border-box;
 }
 
-.debug,
-.debug * {
-  border: 1px solid #f008;
+html,
+body {
+  height: 100%;
+  position: relative;
 }
 
 body {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 100dvh;
-  margin: 0;
-  padding: 0;
-
   background: url("/src/assets/img/bg-light.png");
   background-size: cover;
-  font-family: "Sora", Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 #root {
@@ -34,59 +27,81 @@ body {
   align-items: center;
   justify-content: center;
 
-  aspect-ratio: 1 / 2;
-  min-height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
-main {
-  display: grid;
-  grid-template-rows: repeat(2, 50%);
+main#Calculator {
+  --primary-color: #eee;
+  --secondary-color: #888;
+  --theme-color: orange;
 
-  aspect-ratio: 1 / 2;
-  min-height: 90%;
+  --app-width: 20rem;
+  --app-border-radius: 1rem;
+
+  --font-size: 1rem;
+
+  position: absolute;
+
+  min-height: 95%;
+  min-width: var(--app-width);
 
   background-color: #222;
-  border-radius: 1rem;
+  border-radius: var(--app-border-radius);
 
   * {
     font-family: "Sora";
     font-weight: bold;
   }
 
+  button {
+    color: var(--primary-color);
+  }
+
   #Display {
+    position: absolute;
+    top: 0;
+    left: 0;
+
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-end;
 
-    max-width: 100%;
-    max-height: 100%;
-    padding: 0.5rem 1rem;
+    width: 100%;
+    height: 50%;
+    padding: 0.8rem 1rem;
 
-    color: $inactive-color;
+    color: var(--secondary-color);
 
     .row {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       justify-content: flex-end;
+      cursor: pointer;
+    }
 
-      max-width: min(20rem, 40vmin);
+    #InputRow {
+      display: flex;
+      word-break: break-all;
+      white-space: normal;
 
-      cursor: default;
       text-align: end;
       transition: all 200ms ease;
-      white-space: normal;
+    }
+
+    #ResultRow {
+      display: flex;
       word-break: break-all;
-    }
+      white-space: normal;
 
-    #Display__Input {
-      // blank
-    }
+      text-align: end;
+      transition: all 200ms ease;
 
-    #Display__Result {
       &::before {
-        content: "=";
-        padding-right: 0.25em;
+        content: "= ";
+        padding-right: 0.25rem;
       }
 
       &.visible {
@@ -96,9 +111,13 @@ main {
       }
     }
 
-    .focus {
-      color: $active-color;
-      font-size: 1.75rem;
+    .grey {
+      color: var(--secondary-color);
+    }
+
+    .highlight {
+      color: var(--primary-color);
+      font-size: calc(var(--font-size) * 1.75);
     }
   }
 
@@ -106,13 +125,17 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
     width: 100%;
-    height: 100%;
+    height: 50%;
 
     border-top: solid 2px #555;
 
     * {
-      font-size: 1.5rem;
+      font-size: calc(var(--font-size) * 1.5);
     }
 
     > * {
@@ -123,16 +146,41 @@ main {
   }
 
   button {
+    margin: 0;
+    padding: 0;
     background: none;
-    border: none;
-    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+
     user-select: none;
 
-    svg {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    &:hover {
+      background-color: #555;
     }
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .primary-color {
+    color: var(--primary-color);
+  }
+
+  .text-transparent * {
+    color: transparent;
+  }
+
+  .theme-color {
+    color: var(--theme-color);
+  }
+
+  .no-hover:hover {
+    background: none;
+  }
+
+  .v-hidden {
+    visibility: hidden;
   }
 }
 
@@ -141,16 +189,12 @@ a {
   align-items: center;
   justify-content: center;
 
-  padding: 0.25rem 0.5rem;
-  gap: 0.25rem;
-
+  padding: .25rem .5rem;
+  gap: .25rem;
+  
   background-color: #222;
-  border-radius: 0.5rem;
+  border-radius: .5rem;
   color: #eee;
 
   text-decoration: none;
-}
-
-button {
-  color: $active-color;
 }
